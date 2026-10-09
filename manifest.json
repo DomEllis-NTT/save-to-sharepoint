@@ -8,7 +8,7 @@
         "additionalLanguages": []
     },
     "developer": {
-        "name": "Your Organisation",
+        "name": "HM Treasury",
         "websiteUrl": "https://www.example.com",
         "privacyUrl": "https://www.example.com/privacy",
         "termsOfUseUrl": "https://www.example.com/terms"
@@ -18,14 +18,14 @@
         "full": "Save emails to SharePoint"
     },
     "description": {
-        "short": "Save or move emails into a SharePoint document library.",
+        "short": "HM Treasury: save or move emails into SharePoint.",
         "full": "Pick a SharePoint site, document library and folder, then save the selected emails there as .eml files (attachments included). Optionally remove them from your mailbox afterwards."
     },
     "icons": {
         "outline": "assets/outline.png",
         "color": "assets/color.png"
     },
-    "accentColor": "#0F6CBD",
+    "accentColor": "#B2292E",
     "validDomains": [
         "https://domellis-ntt.github.io"
     ],
@@ -93,11 +93,20 @@
                             "groups": [
                                 {
                                     "id": "saveToSharePointGroup",
-                                    "label": "Save to SharePoint",
+                                    "label": "HM Treasury",
                                     "icons": [
-                                        { "size": 16, "url": "https://domellis-ntt.github.io/save-to-sharepoint/assets/icon-16.png" },
-                                        { "size": 32, "url": "https://domellis-ntt.github.io/save-to-sharepoint/assets/icon-32.png" },
-                                        { "size": 80, "url": "https://domellis-ntt.github.io/save-to-sharepoint/assets/icon-80.png" }
+                                        {
+                                            "size": 16,
+                                            "url": "https://domellis-ntt.github.io/save-to-sharepoint/assets/icon-16.png"
+                                        },
+                                        {
+                                            "size": 32,
+                                            "url": "https://domellis-ntt.github.io/save-to-sharepoint/assets/icon-32.png"
+                                        },
+                                        {
+                                            "size": 80,
+                                            "url": "https://domellis-ntt.github.io/save-to-sharepoint/assets/icon-80.png"
+                                        }
                                     ],
                                     "controls": [
                                         {
@@ -105,9 +114,18 @@
                                             "type": "button",
                                             "label": "Save to SharePoint",
                                             "icons": [
-                                                { "size": 16, "url": "https://domellis-ntt.github.io/save-to-sharepoint/assets/icon-16.png" },
-                                                { "size": 32, "url": "https://domellis-ntt.github.io/save-to-sharepoint/assets/icon-32.png" },
-                                                { "size": 80, "url": "https://domellis-ntt.github.io/save-to-sharepoint/assets/icon-80.png" }
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://domellis-ntt.github.io/save-to-sharepoint/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://domellis-ntt.github.io/save-to-sharepoint/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://domellis-ntt.github.io/save-to-sharepoint/assets/icon-80.png"
+                                                }
                                             ],
                                             "supertip": {
                                                 "title": "Save to SharePoint",
