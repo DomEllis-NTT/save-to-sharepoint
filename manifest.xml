@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  XML ("add-in only") manifest for Save to SharePoint.
+  XML ("add-in only") manifest. Older Outlook clients use the outer (1.0) block: one email at a time.
+  Newer ones use the nested (1.1) block, which allows several selected emails for Save to SharePoint.
   Add it directly in Outlook: Get add-ins > My add-ins > Add a custom add-in > Add from file.
 -->
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
@@ -9,7 +10,7 @@
            xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
            xsi:type="MailApp">
   <Id>8c3b6f0e-5a7d-4e2b-9f1a-2d6c4b8e7a31</Id>
-  <Version>1.0.0.0</Version>
+  <Version>1.1.0.0</Version>
   <ProviderName>Your Organisation</ProviderName>
   <DefaultLocale>en-GB</DefaultLocale>
   <DisplayName DefaultValue="Save to SharePoint"/>
@@ -92,5 +93,61 @@
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Save or move this email into a SharePoint document library."/>
       </bt:LongStrings>
     </Resources>
+
+    <!-- Outlook clients that support Mailbox 1.13 use this block: multiple emails + pinnable pane. -->
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+      <Requirements>
+        <bt:Sets DefaultMinVersion="1.13">
+          <bt:Set Name="Mailbox"/>
+        </bt:Sets>
+      </Requirements>
+      <Hosts>
+        <Host xsi:type="MailHost">
+          <DesktopFormFactor>
+            <ExtensionPoint xsi:type="MessageReadCommandSurface">
+              <OfficeTab id="TabDefault">
+                <Group id="saveToSharePointGroup">
+                  <Label resid="GroupLabel"/>
+                  <Control xsi:type="Button" id="saveToSharePointButton">
+                    <Label resid="TaskpaneButton.Label"/>
+                    <Supertip>
+                      <Title resid="TaskpaneButton.Label"/>
+                      <Description resid="TaskpaneButton.Tooltip"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="Icon.16x16"/>
+                      <bt:Image size="32" resid="Icon.32x32"/>
+                      <bt:Image size="80" resid="Icon.80x80"/>
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="Taskpane.Url"/>
+                      <SupportsPinning>true</SupportsPinning>
+                      <SupportsMultiSelect>true</SupportsMultiSelect>
+                    </Action>
+                  </Control>
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
+      <Resources>
+        <bt:Images>
+          <bt:Image id="Icon.16x16" DefaultValue="https://domellis-ntt.github.io/save-to-sharepoint/assets/icon-16.png"/>
+          <bt:Image id="Icon.32x32" DefaultValue="https://domellis-ntt.github.io/save-to-sharepoint/assets/icon-32.png"/>
+          <bt:Image id="Icon.80x80" DefaultValue="https://domellis-ntt.github.io/save-to-sharepoint/assets/icon-80.png"/>
+        </bt:Images>
+        <bt:Urls>
+          <bt:Url id="Taskpane.Url" DefaultValue="https://domellis-ntt.github.io/save-to-sharepoint/taskpane.html"/>
+        </bt:Urls>
+        <bt:ShortStrings>
+          <bt:String id="GroupLabel" DefaultValue="Save to SharePoint"/>
+          <bt:String id="TaskpaneButton.Label" DefaultValue="Save to SharePoint"/>
+        </bt:ShortStrings>
+        <bt:LongStrings>
+          <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Save or move the selected emails into a SharePoint document library."/>
+        </bt:LongStrings>
+      </Resources>
+    </VersionOverrides>
   </VersionOverrides>
 </OfficeApp>
